@@ -1,0 +1,127 @@
+###1###
+
+def fib(n):
+
+    """Return the first n items
+    of Fibonacci array
+    """
+
+    if n==1:
+    
+        f=[1]
+
+    else:
+
+        f=[1,1]
+
+        for i in range(2,n):
+            f.append(f[i-2]+f[i-1])
+    return f
+            
+print fib(7)
+
+###2###
+
+def intergrate(f,dx=1.0):
+
+    """this is used to calculate
+    intergration by Trapezodial
+    rule"""
+
+    n=len(f)
+
+    sum=0.0
+
+    for i in range(0,n-1):
+
+        sum=sum+(f[i]+f[i+1])/2*dx
+
+    return sum
+print intergrate([1,2,3],0.9)
+
+###3###
+
+def read_and_discharge(filename):
+    f = open(filename)
+    
+    import datetime
+
+    dates=[]
+    discharges=[]
+
+    for line in f.readlines():
+        data = line.split('\t')
+        if (data[0] == 'USGS'):
+            year = int(data[2][:4])
+            month = int(data[2][5:7])
+            day = int(data[2][8:])
+            	
+	    discharge=data[3]	    
+    	    date=datetime.date(year,month,day)
+            dates.append(date)
+	    discharges.append(discharge)
+    return dates,discharges
+
+dates,discharges=read_and_discharge('/home/yili/python/discharge.dat')
+
+print dates[0],discharges[0]
+
+###4###
+
+def read_drifter(filename):
+
+    f=open(filename)
+
+    names=[]
+    tracks={}
+    
+    for line in f.readlines():
+        data=line.split()
+        if data!=[]:
+	    if data[1] == 'ACTIVE':
+		if data[3][1]=='0':
+		    name = data[1] + ' ' + data[2] + ' ' + data[3]
+	        else:
+		    name = data[1] + ' ' + data[2]
+	    else:
+		name = data[1]
+	names.append(name)
+
+    for name in names:
+
+        positions=[]
+	f=open(filename)
+
+	while 1:
+	    line=f.readline()
+	    lines=line.split()
+
+	    if (len(lines) == 7 and lines[1]==name) or (len(lines)==12 and lines[1]+' '+lines[2]+' '+lines[3]==name) or (len(lines)==11 and lines[1]+' '+lines[2]==name and lines[3][0]=='5'):
+
+	        f.readline()
+       	        f.readline()
+		f.readline()
+
+		while 1:
+		    line=f.readline()
+	    	    lines=line.split()
+
+		    if not len(lines) == 0:
+		        lat=float(lines[1][1:])+(float(lines[2]))%100.0/60.0
+ 	     	        lon=float(lines[3][1:])+(float(lines[4]))%100.0/60.0
+		        lat = "%.4f" % lat
+		        lon = "%.4f" % lon
+		    	positions.append((lat,lon))
+		    
+   	    	    else:
+		        break
+
+		    tracks.update({name:positions})
+		break
+	    if not line:
+		break
+    return tracks 
+
+tracks=read_drifter('/home/yili/python/drifter.dat')
+
+print tracks['ACTIVE LOG 002']
