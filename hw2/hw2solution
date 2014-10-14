@@ -167,7 +167,7 @@ class discharge(object):
 		mean_value=np.zeros(365)
 		mean_number=np.zeros(365)
 		values=np.zeros((365,48))
-		std_value=365*[]
+		std_value=365*[[]]
 
 		for yr in years:
 			dates,discharges=self.data_of_year(yr)
