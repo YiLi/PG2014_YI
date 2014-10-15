@@ -1,6 +1,6 @@
 ##HW2Q3
 ##programmed by Yili
-##Oct 9th
+##Oct 9th.
 import numpy as np
 import matplotlib.pyplot as plt
 
