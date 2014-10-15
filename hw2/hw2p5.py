@@ -41,8 +41,8 @@ contour1=plt.contour(lat,lon,z,-1000.,colors='k',linewidths=1)
 contour2=plt.contour(lat,lon,z,0.,colors='k',linewidths=3)
 contour3=plt.contour(lat,lon,z,1000.,colors='k',linewidths=1)
 
-contour2.collection[0].set_linestyle('solid')
-contour3.collection[0].set_linestyle('solid')
+contour2.collections[0].set_linestyle('solid')
+contour3.collections[0].set_linestyle('solid')
 
 plt.pcolormesh(lat,lon,z,cmap=plt.cm.RdBu_r)
 
