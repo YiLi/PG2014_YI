@@ -91,7 +91,7 @@ class discharge(object):
 				mean_value[dates.index(time)]=mean_value+discharges[dates.index(time)]
 				mean_number[dates.index(time)]=mean_number+1
 					for mean_day in mean_dates:
-						if month = mean_dates.month and day = mean_dates.day
+						if (month = mean_dates.month and day = mean_dates.day):
 							std_values[mean_dates].append(discharges[dates.index(time)])
 
 		for i in range(365):
@@ -101,8 +101,7 @@ class discharge(object):
 			else:
 				mean_value[i]=mean_value[i]/mean_number
 				std_value=np.std(std_values[i])
-		for date in dates:
-			if 
+
 			
 
 		return mean_dates,mean_value,std_value
