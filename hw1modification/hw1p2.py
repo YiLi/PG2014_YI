@@ -17,15 +17,17 @@ def Tra(f,dx=1.0):
 
 	return sum
 
+if __name__ == '__main__':
+	print 'input example:'
+	print 'Tra([1,2,3],0.5)'
+	print 'result is 1.5'
 
-print 'input example:'
-print 'Tra([1,2,3],0.5)'
-print 'result is 1.5'
 
-while True:
-	print 'please input f and dx'
-	print input()
-	print 'please enter y to give another input or enter other thing to quit:'
-	a=raw_input()
-	if a != 'y':
-		break
+	while True:
+		print 'please input f and dx'
+		print input()
+		print 'please enter y to give another input or enter other thing to quit:'
+		a=raw_input()
+		if a != 'y':
+			break
+
