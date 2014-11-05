@@ -22,7 +22,7 @@ def read_and_discharge(filename):
 			discharges.append(discharge)
 	return dates,discharges
 
-dates,discharges=read_and_discharge('/home/yili/python/discharge.dat')
+dates,discharges=read_and_discharge('discharge.dat')
 
 if __name__ == '__main__':
 	print 'dates and discharge values are stored in dates and discharges'
