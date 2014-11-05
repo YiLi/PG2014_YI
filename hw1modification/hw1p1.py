@@ -20,6 +20,20 @@ def fib(n):
 			f.append(f[i-2]+f[i-1])
 	return f
 
-print 'please input how many Numbers you want in Fibonacci '
 
-print 'the result is:'+str(fib(int(raw_input())))
+print 'input example:'
+print 'fib(4)'
+print 'result is [1,1,2,3]'
+
+
+while True:
+	print 'please input how many Numbers you want in Fibonacci '
+	print input()
+	print 'please enter y to give another input or give other thing to quit:'
+	a=raw_input()
+	if a != 'y':
+		break
+
+
+	
+
