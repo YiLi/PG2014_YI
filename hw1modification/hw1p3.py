@@ -28,8 +28,8 @@ if __name__ == '__main__':
 	print 'dates and discharge values are stored in dates and discharges'
 	print 'please call what you want to see.'
 	print 'example:'
-	print 'dates[0],discharges[0]'
-	print '1923-06-01 4800'
+	print 'dates[0],discharges[0]' #result should be 1923-06-01 4800
+	print  dates[0],discharges[0]	
 
 	while True:
 		print 'please call dates or discharge values'
