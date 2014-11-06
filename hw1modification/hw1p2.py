@@ -19,8 +19,8 @@ def Tra(f,dx=1.0):
 
 if __name__ == '__main__':
 	print 'input example:'
-	print 'Tra([1,2,3],0.5)'
-	print 'result is 1.5'
+	print 'Tra([1,2,3],0.5)' #result should be 1.5
+	print Tra([1,2,3],0.5)
 
 
 	while True:
