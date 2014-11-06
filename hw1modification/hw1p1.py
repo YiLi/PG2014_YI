@@ -22,8 +22,8 @@ def fib(n):
 
 if __name__ == '__main__':
 	print 'input example:'
-	print 'fib(4)'
-	print 'result is [1,1,2,3]'
+	print 'fib(4)' #result should be [1,1,2,3]
+	print fib(4)
 
 
 	while True:
