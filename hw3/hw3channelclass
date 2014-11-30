@@ -1,0 +1,40 @@
+#Hw3 channel with class
+#Yi Li
+#2014/11/25
+import numpy as np
+import matplotlib.pyplot as plt
+import pylab
+class channel(object):
+	def __init__(self,steps,points,g,H,delta_x,delta_t):
+		self.nt=steps
+		self.nx=points
+		self.H =H
+		self.dx=delta_x
+		self.dt=delta_t
+	def eta(self):
+
+		t=np.array(range(0,self.nt))
+		x=np.array(range(0,self.nx))
+		eta=np.array(np.zeros([self.nx,self.nt]))
+		u =np.array(np.zeros([self.nx+1,self.nt]))
+
+		eta[0,0]=self.H/2.
+		T,X=np.meshgrid(t,x)
+		for i in range(1,self.nt):
+			u[1:-1,i] = u[1:-1,i] - g*self.dt/self.dx*(eta[1:,i-1]-eta[:-1,i-1])
+			eta[:,i] = eta[:,i] - self.H*self.dt/self.dx*(u[1:,i]-u[:-1,i])
+
+		for n in range(self.nt):
+			plt.clf();plt.plot(eta[:,n]);
+			pylab.ylim([-6,6])
+			plt.savefig('./plots/wave_%03d.png' % n)
+
+		self.eta=eta
+		self.X =X
+		self.T =T
+
+if __name__ == '__main__':
+
+data=channel(points=20,steps=150,g=9.81,H=40.,delat_x=100,dt=5.0)
+
+data.eta()
