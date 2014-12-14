@@ -67,6 +67,8 @@ class channel(object):
 		nc.createVariable('u', 'd', ('x_u', 'timesteps'))
 		nc.variables['u'][:] = self.u
 		nc.variables['eta'].units = 'meter/second'
+		
+		nc.close()
 	
 if __name__ == '__main__':
 
