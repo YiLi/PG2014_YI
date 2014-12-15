@@ -1,7 +1,3 @@
-##HW4Q1
-##programmed by Yili
-##Dec 14th
-
 import numpy as np
 import matplotlib.pyplot as plt
 import netCDF4
@@ -23,8 +19,8 @@ class channel(object):
 		x_u=np.array(np.arange(0.0,self.nx*self.dx,self.dx))
 		x_eta = np.array(np.arange(self.dx/2.,(self.nx-1./2)*self.dx,self.dx))
 		time = np.array(np.arange(0.,self.nt*self.dt,self.dt))
-		eta=np.array(np.zeros([self.nx,self.nt]))
-		u =np.array(np.zeros([self.nx+1,self.nt]))
+		eta=np.array(np.zeros([self.nx-1,self.nt]))
+		u =np.array(np.zeros([self.nx,self.nt]))
 
 		eta[0:10,0]=self.H/2.
 		T,X=np.meshgrid(t,x_u)
@@ -67,8 +63,6 @@ class channel(object):
 		nc.createVariable('u', 'd', ('x_u', 'timesteps'))
 		nc.variables['u'][:] = self.u
 		nc.variables['eta'].units = 'meter/second'
-		
-		nc.close()
 	
 if __name__ == '__main__':
 
